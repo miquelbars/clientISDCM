@@ -13,7 +13,7 @@ public class VideoDAO {
         try {
             DataSource ds = DataSource.getInstance();
             //here mydb is database name, mydb is username and password
-            String insertNewUserSQL = "INSERT INTO MYDB.VIDEO (TITULO, AUTOR, FECHA_CREACION, DURACION, REPRODUCCIONES, DESCRIPCION, FORMATO) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+            String insertNewUserSQL = "INSERT INTO MYDB.VIDEO (TITULO, AUTOR, FECHA_CREACION, DURACION, REPRODUCCIONES, DESCRIPCION, FORMATO, URL) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement pstmt = ds.getConnection().prepareStatement(insertNewUserSQL);
             pstmt.setString(1, video.getTitulo());
             pstmt.setString(2, video.getAutor());
@@ -42,6 +42,7 @@ public class VideoDAO {
 
             while(result.next()){
                 VideoDTO video = new VideoDTO();
+                video.setId(result.getInt("id"));
                 video.setTitulo(result.getString("titulo"));
                 video.setAutor(result.getString("autor"));
                 video.setFechaCreacion(result.getDate("fecha_creacion").toLocalDate());

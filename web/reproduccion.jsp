@@ -14,16 +14,6 @@
         <!-- <script src="https://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script> -->
     </head>
     <body>
-        <div>
-            <form action="webresources" method="get">
-                <input type="int" name="id"/>
-                <input type="submit" name="submit" value="Enviar con GET"/>
-            </form>        
-            <form action="webresources" method="post">
-                <input type="int" name="id"/>
-                <input type="submit" name="submit" value="Enviar con POST"/>
-            </form>
-        </div>
         <!--
         <video
             id="my-player"
