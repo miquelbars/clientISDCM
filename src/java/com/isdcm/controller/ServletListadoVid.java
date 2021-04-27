@@ -5,10 +5,11 @@
  */
 package com.isdcm.controller;
 
-import com.isdcm.dao.UsuarioDAO;
-import com.isdcm.dto.UsuarioDTO;
+import com.isdcm.dao.VideoDAO;
+import com.isdcm.dto.VideoDTO;
 import java.io.IOException;
-import java.sql.SQLException;
+import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -21,35 +22,28 @@ import javax.servlet.http.HttpSession;
  *
  * @author fiblabs
  */
-@WebServlet(urlPatterns = "/reproducir")
-public class ServletReproduccionVid extends HttpServlet {
+@WebServlet(name = "ServletListadoVid", urlPatterns = {"/listadoVideos"})
+public class ServletListadoVid extends HttpServlet {
+
+    private final VideoDAO videoDAO;
+
+    public ServletListadoVid() {
+        this.videoDAO = new VideoDAO();
+    }
     
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        System.out.println("Entra a doGet de listado videos : ");
         HttpSession session = request.getSession(false);
         if (session == null) {
             RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
             dispatcher.forward(request, response);
         }
-        System.out.println("Entra a doGet de reproduccion : ");
-        String id = request.getParameter("id");
-        String url = request.getParameter("url");
-        request.setAttribute("url", url);
-        request.setAttribute("id", id);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("reproduccion.jsp");
+        List<VideoDTO> videos = videoDAO.getVideos();
+        request.setAttribute("lista", videos);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("listadoVid.jsp");
         dispatcher.forward(request, response);
     }
-
-
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
 
 }

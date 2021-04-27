@@ -1,16 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-
-/*
 package com.isdcm.controller;
 
-import com.isdcm.dao.UsuarioDAO;
 import com.isdcm.dao.VideoDAO;
-import com.isdcm.dto.UsuarioDTO;
 import com.isdcm.dto.VideoDTO;
 import com.isdcm.soap.services.SearchVideoWS_Service;
 import java.io.IOException;
@@ -27,17 +17,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import javax.xml.ws.WebServiceRef;
-
-*/
 
 /**
  *
  * @author fiblabs
  */
 
-/*
 @WebServlet(urlPatterns = {"/busqueda"})
 public class ServletBusqueda extends HttpServlet {
     @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/isdcm-soap/SearchVideoWS.wsdl")
@@ -54,7 +40,6 @@ public class ServletBusqueda extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
 
-/*
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
@@ -87,7 +72,6 @@ public class ServletBusqueda extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
 
-/*
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -148,7 +132,7 @@ public class ServletBusqueda extends HttpServlet {
         
         List<VideoDTO> L = new ArrayList<>();
         for (int i = 0; i < ListV.size(); ++i){
-            VideoDTO video = new VideoDTO(0, ListV.get(i).getTitulo(), ListV.get(i).getAutor(), LocalDate.parse(ListV.get(i).getFechaCreacion()), LocalTime.parse(ListV.get(i).getDuracion()), ListV.get(i).getReproducciones(), ListV.get(i).getDescripcion(), ListV.get(i).getFormato());
+            VideoDTO video = new VideoDTO(0, ListV.get(i).getTitulo(), ListV.get(i).getAutor(), LocalDate.parse(ListV.get(i).getFechaCreacion()), LocalTime.parse(ListV.get(i).getDuracion()), ListV.get(i).getReproducciones(), ListV.get(i).getDescripcion(), ListV.get(i).getFormato(), ListV.get(i).getUrl());
             L.add(video);
         }
         
@@ -169,7 +153,6 @@ public class ServletBusqueda extends HttpServlet {
      * @return a String containing servlet description
      */
 
-/*
     @Override
     public String getServletInfo() {
         return "Short description";
@@ -198,5 +181,3 @@ public class ServletBusqueda extends HttpServlet {
     }
 
 }
-
-*/

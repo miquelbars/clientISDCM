@@ -33,7 +33,7 @@ if(session.getAttribute("user")==null) //check for existing session
             <input type="submit" value="Buscar Video"/>
         </form>
         <br><br>
-        <a href="<%= request.getContextPath() %>/reproduccion.jsp">Visualizar video</a>
+        <a href="<%= request.getContextPath() %>/listadoVideos">Ver videos</a>
         <br><br>
         <a href="<%= request.getContextPath() %>/video.jsp">Insertar video</a>
         <br/><br/>

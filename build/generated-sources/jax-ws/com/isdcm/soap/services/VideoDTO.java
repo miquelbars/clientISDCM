@@ -39,7 +39,8 @@ import javax.xml.bind.annotation.XmlType;
     "duracion",
     "reproducciones",
     "descripcion",
-    "formato"
+    "formato",
+    "url"
 })
 public class VideoDTO {
 
@@ -50,6 +51,7 @@ public class VideoDTO {
     protected int reproducciones;
     protected String descripcion;
     protected String formato;
+    protected String url;
 
     /**
      * Obtiene el valor de la propiedad titulo.
@@ -210,5 +212,15 @@ public class VideoDTO {
     public void setFormato(String value) {
         this.formato = value;
     }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+    
+    
 
 }

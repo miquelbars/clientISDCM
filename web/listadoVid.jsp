@@ -7,6 +7,9 @@ if(session.getAttribute("user")== null) //check for existing session
 	response.sendRedirect("login.jsp");
 }
 %>
+
+
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -15,39 +18,38 @@ if(session.getAttribute("user")== null) //check for existing session
     </head>
     <body>
         <h1>Lista de Videos!</h1>
-        <form action="Videos/<%=request.getParameterValues("id")%>/reproducciones" method="GET">
-            <table border="1">
-                <tr>
-                    <th> Seleccionar </th>
-                    <th> Titulo </th>
-                    <th> Autor </th>
-                    <th> Fecha de Creación </th>
-                    <th> Duración </th>
-                    <th> Reproducciones </th>
-                    <th> Descripción </th>
-                    <th> Formato </th>
-                    <th> URL </th>
-                </tr>
-                <%
-                    ArrayList<VideoDTO> list = (ArrayList<VideoDTO>) request.getAttribute("lista");
-                    for(int i = 0; i < list.size(); i++){
-                %>
-                <tr>
-                    <td> <input TYPE="radio" name="id" value=<%= list.get(i).getId() %>/> </td>
-                    <td> <%= list.get(i).getTitulo() %> </td>
-                    <td> <%= list.get(i).getAutor() %> </td>
-                    <td> <%= list.get(i).getFechaCreacion() %> </td>
-                    <td> <%= list.get(i).getDuracion() %> </td>
-                    <td> <%= list.get(i).getReproducciones() %> </td>
-                    <td> <%= list.get(i).getDescripcion() %> </td>
-                    <td> <%= list.get(i).getFormato() %> </td>
-                    <td> <%= list.get(i).getUrl() %> </td>
-                </tr>    
-                <%
-                    }
-                %>
-            </table>
-            <input type="submit" name="submit" value="Enviar con GET"/>
-        </form>
+        <table border="1">
+            <tr>
+                <th> Seleccionar </th>
+                <th> Titulo </th>
+                <th> Autor </th>
+                <th> Fecha de Creación </th>
+                <th> Duración </th>
+                <th> Reproducciones </th>
+                <th> Descripción </th>
+                <th> Formato </th>
+                <th> URL </th>
+                <th></th>
+            </tr>
+            <%
+                ArrayList<VideoDTO> list = (ArrayList<VideoDTO>) request.getAttribute("lista");
+                for(int i = 0; i < list.size(); i++){
+            %>
+            <tr>
+                <td> <input TYPE="radio" name="id" value=<%= list.get(i).getId() %>/> </td>
+                <td> <%= list.get(i).getTitulo() %> </td>
+                <td> <%= list.get(i).getAutor() %> </td>
+                <td> <%= list.get(i).getFechaCreacion() %> </td>
+                <td> <%= list.get(i).getDuracion() %> </td>
+                <td> <%= list.get(i).getReproducciones() %> </td>
+                <td> <%= list.get(i).getDescripcion() %> </td>
+                <td> <%= list.get(i).getFormato() %> </td>
+                <td> <%= list.get(i).getUrl() %> </td>
+                <td> <a href="<%= request.getContextPath() %>/reproducir?id=<%= list.get(i).getId() %>&url=<%= list.get(i).getUrl() %>">Visualizar video</a> </td>
+            </tr>    
+            <%
+                }
+            %>
+        </table>
     </body>
 </html>
